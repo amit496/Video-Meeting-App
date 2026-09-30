@@ -491,3 +491,4 @@ More features and improvements will be added as development continues.
 This project is currently intended as a portfolio and learning project.
 
 A formal open-source license can be added when the project is ready for external contributions and redistribution.
+
