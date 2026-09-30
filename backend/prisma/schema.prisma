@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  meetings     Meeting[]
+  participations Participant[]
+  messages     Message[]
+}
+
+model Meeting {
+  id        Int      @id @default(autoincrement())
+  roomId    String   @unique
+  title     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  hostId       Int
+  host         User          @relation(fields: [hostId], references: [id])
+  participants Participant[]
+  messages     Message[]
+}
+
+model Participant {
+  id        Int      @id @default(autoincrement())
+  joinedAt  DateTime @default(now())
+
+  userId    Int
+  meetingId Int
+
+  user      User    @relation(fields: [userId], references: [id])
+  meeting   Meeting @relation(fields: [meetingId], references: [id])
+
+  @@unique([userId, meetingId])
+}
+
+model Message {
+  id        Int      @id @default(autoincrement())
+  content   String
+  createdAt DateTime @default(now())
+
+  userId    Int
+  meetingId Int
+
+  user    User    @relation(fields: [userId], references: [id])
+  meeting Meeting @relation(fields: [meetingId], references: [id])
+}
