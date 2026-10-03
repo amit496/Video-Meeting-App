@@ -1,38 +1,101 @@
-# Backend File and Folder Structure
-
-Backend path: `D:\\video-meeting-app\\backend`
+## File and folder tree
 
 backend/
 ├── .agents/
 │   └── skills/
 │       ├── prisma-cli/
-│       │   ├── references/ (Prisma CLI workflow guides)
+│       │   ├── references/
+│       │   │   ├── agent-safety.md
+│       │   │   ├── complete.md
+│       │   │   ├── db-execute.md
+│       │   │   ├── db-pull.md
+│       │   │   ├── db-push.md
+│       │   │   ├── db-seed.md
+│       │   │   ├── debug.md
+│       │   │   ├── dev.md
+│       │   │   ├── format.md
+│       │   │   ├── generate.md
+│       │   │   ├── init.md
+│       │   │   ├── mcp.md
+│       │   │   ├── migrate-deploy.md
+│       │   │   ├── migrate-dev.md
+│       │   │   ├── migrate-diff.md
+│       │   │   ├── migrate-reset.md
+│       │   │   ├── migrate-resolve.md
+│       │   │   ├── migrate-status.md
+│       │   │   ├── studio.md
+│       │   │   └── validate.md
 │       │   └── SKILL.md
 │       ├── prisma-client-api/
-│       │   ├── references/ (Prisma Client API guides)
+│       │   ├── references/
+│       │   │   ├── client-methods.md
+│       │   │   ├── constructor.md
+│       │   │   ├── filters.md
+│       │   │   ├── model-queries.md
+│       │   │   ├── query-options.md
+│       │   │   ├── raw-queries.md
+│       │   │   ├── relations.md
+│       │   │   └── transactions.md
 │       │   └── SKILL.md
 │       ├── prisma-compute/
-│       │   ├── references/ (Prisma Compute guides)
+│       │   ├── references/
+│       │   │   ├── app-deploy-cli.md
+│       │   │   ├── compute-config.md
+│       │   │   ├── create-prisma.md
+│       │   │   ├── frameworks.md
+│       │   │   ├── sdk-api.md
+│       │   │   └── troubleshooting.md
 │       │   └── SKILL.md
 │       ├── prisma-database-setup/
-│       │   ├── references/ (database setup guides)
+│       │   ├── references/
+│       │   │   ├── cockroachdb.md
+│       │   │   ├── mongodb.md
+│       │   │   ├── mysql.md
+│       │   │   ├── postgresql.md
+│       │   │   ├── prisma-client-setup.md
+│       │   │   ├── prisma-postgres.md
+│       │   │   ├── sqlite.md
+│       │   │   └── sqlserver.md
 │       │   └── SKILL.md
 │       ├── prisma-driver-adapter-implementation/
 │       │   └── SKILL.md
 │       ├── prisma-mongodb-upgrade/
-│       │   ├── references/ (upgrade guides)
+│       │   ├── references/
+│       │   │   ├── client-api-mapping.md
+│       │   │   ├── decision-stay-or-migrate.md
+│       │   │   ├── migrations-mapping.md
+│       │   │   ├── schema-contract-mapping.md
+│       │   │   └── verify-cutover-checklist.md
 │       │   └── SKILL.md
 │       ├── prisma-postgres/
-│       │   ├── references/ (PostgreSQL guides)
+│       │   ├── references/
+│       │   │   ├── console-and-connections.md
+│       │   │   ├── create-db-cli.md
+│       │   │   ├── management-api-sdk.md
+│       │   │   └── management-api.md
 │       │   └── SKILL.md
 │       ├── prisma-postgres-setup/
-│       │   ├── references/ (PostgreSQL setup guides)
+│       │   ├── references/
+│       │   │   ├── api-basics.md
+│       │   │   ├── auth.md
+│       │   │   ├── endpoints.md
+│       │   │   └── prisma7-client.md
 │       │   └── SKILL.md
 │       └── prisma-upgrade-v7/
-│           ├── references/ (Prisma 7 upgrade guides)
+│           ├── references/
+│           │   ├── accelerate-users.md
+│           │   ├── driver-adapters.md
+│           │   ├── env-variables.md
+│           │   ├── esm-support.md
+│           │   ├── prisma-config.md
+│           │   ├── removed-features.md
+│           │   └── schema-changes.md
 │           └── SKILL.md
-├── .claude/ (agent/tool configuration folder; inspect locally for its contents)
-├── .windsurf/ (agent/tool configuration folder; inspect locally for its contents)
+├── .claude/
+│   └── skills/ (contents not expanded)
+├── .windsurf/
+│   └── skills/ (contents not expanded)
+├── node_modules/ (installed dependencies; contents not expanded)
 ├── prisma/
 │   ├── migrations/
 │   │   ├── 20260909130753_init/
@@ -44,7 +107,7 @@ backend/
 │   │   └── auth/
 │   │       └── auth.controller.js
 │   ├── generated/
-│   │   └── prisma/ (generated Prisma Client TypeScript files)
+│   │   └── prisma/
 │   │       ├── internal/
 │   │       │   ├── class.ts
 │   │       │   ├── prismaNamespace.ts
@@ -72,32 +135,12 @@ backend/
 │   │       └── auth.validator.js
 │   ├── app.js
 │   ├── server.js
-│   ├── socket.js (currently empty)
+│   ├── socket.js
 │   └── test-db.js
-├── .env (local secrets; do not share or commit)
+├── .env
 ├── .gitignore
+├── BACKEND_STRUCTURE.md
 ├── package-lock.json
 ├── package.json
 ├── prisma7.config.ts
 └── skills-lock.json
-```
-
-## Main source folders
-
-- `src/controllers/` — HTTP request handlers and business logic; currently auth controller.
-- `src/routes/` — Express route definitions; currently register/login routes.
-- `src/validators/` — Zod request schemas; currently auth schemas.
-- `src/middleware/` — Express middleware; currently JWT authentication middleware.
-- `src/lib/` — shared infrastructure clients; currently Prisma client.
-- `src/generated/prisma/` — generated Prisma Client TypeScript output; do not edit manually.
-- `prisma/schema.prisma` — PostgreSQL data models and relations.
-- `prisma/migrations/` — database migration history.
-- `src/app.js` — Express app and route/middleware registration.
-- `src/server.js` — HTTP server startup.
-- `src/socket.js` — reserved for Socket.IO (empty at present).
-- `src/test-db.js` — small PostgreSQL/Prisma connection check.
-- `prisma7.config.ts` — Prisma schema, migration and datasource configuration.
-- `skills-lock.json`, `.agents/skills/` — local Prisma agent skill documentation; not application runtime code.
-
-Excluded installed folder
-`node_modules/` contains installed npm packages and is omitted from this source tree.

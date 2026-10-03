@@ -1,6 +1,6 @@
 # Frontend File and Folder Structure
 
-Frontend path: `D:\\video-meeting-app\\frontend`
+Frontend path: `D:\video-meeting-app\frontend`
 
 ```text
 frontend/
@@ -15,19 +15,20 @@ frontend/
 │   ├── components/
 │   │   ├── auth/ (currently empty)
 │   │   ├── chat/ (currently empty)
-│   │   ├── common/ (currently empty)
+│   │   ├── common/
+│   │   │   └── ProtectedRoute.jsx
 │   │   └── meeting/ (currently empty)
 │   ├── pages/
 │   │   ├── Auth/
-│   │   │   ├── Login.jsx (empty)
-│   │   │   └── Register.jsx (empty)
+│   │   │   ├── Login.jsx
+│   │   │   └── Register.jsx
 │   │   ├── Chat/ (currently empty)
 │   │   ├── Dashboard/
-│   │   │   └── Dashboard.jsx (empty)
+│   │   │   └── Dashboard.jsx
 │   │   └── Meeting/ (currently empty)
 │   ├── services/
 │   │   ├── auth/
-│   │   │   └── auth.service.js (empty)
+│   │   │   └── auth.service.js
 │   │   ├── chat/ (currently empty)
 │   │   └── meeting/ (currently empty)
 │   ├── App.css
@@ -36,6 +37,7 @@ frontend/
 │   └── main.jsx
 ├── .gitignore
 ├── eslint.config.js
+├── FRONTEND_STRUCTURE.md
 ├── index.html
 ├── package-lock.json
 ├── package.json
@@ -46,18 +48,18 @@ frontend/
 ## Main entries
 
 - `src/main.jsx` — React entry point; mounts `App` into the page.
-- `src/App.jsx` — current application screen; still the Vite/React starter template.
+- `src/App.jsx` — React Router configuration for login, registration and dashboard routes. The root and unknown routes redirect to `/login`; dashboard is protected by `ProtectedRoute`.
 - `src/App.css`, `src/index.css` — component and global styles.
-- `src/assets/` — images and logos used by the starter screen.
-- `src/components/` — planned reusable UI grouped into auth, chat, common and meeting folders; currently empty.
-- `src/pages/` — planned auth, chat, dashboard and meeting screens. `Login.jsx`, `Register.jsx` and `Dashboard.jsx` exist but are empty and are not connected to the app.
-- `src/services/` — planned API/service modules for auth, chat and meetings. `auth.service.js` exists but is empty; chat and meeting folders are empty.
+- `src/assets/` — images and logos, including the Vite starter assets.
+- `src/components/` — reusable UI grouped into auth, chat, common and meeting folders. `ProtectedRoute.jsx` checks for a token in local storage before rendering protected routes.
+- `src/pages/` — login, registration and dashboard pages are implemented and connected to the routes. Chat and meeting folders are currently empty.
+- `src/services/` — API/service modules for auth, chat and meetings. The auth service is implemented; chat and meeting folders are currently empty.
 - `public/` — static icons served as-is.
 - `index.html` — Vite HTML entry document.
 - `vite.config.js` — Vite configuration and React plugin.
 - `eslint.config.js` — ESLint configuration.
 - `package.json` / `package-lock.json` — scripts and locked npm dependencies.
-- `README.md` — frontend setup notes (currently template documentation).
+- `README.md` — frontend setup notes.
 
 ## Excluded generated/installed folders
 
